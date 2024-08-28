@@ -1,0 +1,54 @@
+#include<stdio.h>
+
+void selectionSort(int*v,int tam){
+	int i,j,menor;
+	for(i=0;i<tam;i++){
+		menor=i;
+	    for (j=i+1;j<tam;j++)
+			if(v[j]<v[menor])
+				menor=j;
+		
+		int aux= v[i];
+		v[i]=v[menor];
+		v[menor]=aux;
+	}
+}
+
+void selectionSortRecursivo(int*v,int inicio,int tam){
+	
+		if(inicio>=tam)return;
+		
+		int j, menor;
+		
+		menor=inicio;
+		for(j=inicio+1;j<tam;j++)
+			if(v[j]<v[menor])
+				menor=j;
+				
+		int aux=v[inicio];
+		v[inicio]=v[menor];
+		v[menor]=aux;
+		
+		selectionSortRecursivo(v,inicio+1,tam);
+}
+
+void imprimir(int*v, int tam){
+	int i;
+	for(i=0;i<tam;i++)
+		printf("%d, ",v[i]);
+	printf("\n");
+}
+
+int main(){
+
+	int vet[]={4,6,9,1,5,2,8,0};
+	int tam=8;
+
+	imprimir(vet,tam);
+	selectionSort(vet,tam);
+
+	imprimir(vet,tam);
+
+	return 0;
+}
+
